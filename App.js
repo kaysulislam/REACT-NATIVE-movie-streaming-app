@@ -1,65 +1,88 @@
 import * as React from 'react';
 import {View, Text, Button} from 'react-native';
+
+//for the navigator
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
-const HomeScreen = ({navigation}) => {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details screen"
-        onPress={() => navigation.navigate('Details')}
-      />
-    </View>
-  );
-};
+import icon from 'react-native-vector-icons/Ionicons';
 
-const DetailsScreen = ({navigation}) => {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Deails Screen</Text>
-      <Button
-        title="Go to Details screen...again"
-        onPress={() => navigation.push('Details')}
-      />
-      <Button
-        title="Go to Home screen"
-        onPress={() => navigation.navigate('Home')}
-      />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-      <Button
-        title="Go to the first screen"
-        onPress={() => navigation.popToTop()}
-      />
-    </View>
-  );
-};
+//for different screens
+import HomeScreen from './screens/HomeScreen';
+import DetailsScreen from './screens/DetailsScreen';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-const Stack = createStackNavigator();
+const HomeStack = createStackNavigator();
+const DetailsStack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
+const HomeStackScreen = ({navigation}) => (
+  <HomeStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#009387',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }}>
+    <HomeStack.Screen
+      name="Home"
+      component={HomeScreen}
+      options={{
+        title: 'OVERVIEW',
+        headerLeft: () => (
+          <Icon.Button
+            name="menu"
+            size={30}
+            backgroundColor="#009387"
+            onPress={() => {
+              navigation.openDrawer();
+            }}></Icon.Button>
+        ),
+      }}
+    />
+  </HomeStack.Navigator>
+);
+
+const DetailsStackScreen = ({navigation}) => (
+  <DetailsStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#009387',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }}>
+    <DetailsStack.Screen
+      name="Details"
+      component={DetailsScreen}
+      options={{
+        headerLeft: () => (
+          <Icon.Button
+            name="menu"
+            size={30}
+            backgroundColor="#009387"
+            onPress={() => {
+              navigation.openDrawer();
+            }}></Icon.Button>
+        ),
+      }}
+    />
+  </DetailsStack.Navigator>
+);
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: '#009387',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }}>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            title: 'HOME SWEET HOME',
-          }}
-        />
-        <Stack.Screen name="Details" component={DetailsScreen} />
-      </Stack.Navigator>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeStackScreen} />
+        <Drawer.Screen name="Details" component={DetailsStackScreen} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };
