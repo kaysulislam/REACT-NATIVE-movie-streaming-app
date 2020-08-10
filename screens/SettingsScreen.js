@@ -1,16 +1,16 @@
 import React from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
 
-const HomeScreen = ({navigation}) => {
+const SettingsScreen = ({navigation}) => {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
+      <Text>Settings Screen</Text>
       <Button
-        title="Go to ExerciseScreen"
-        onPress={() => navigation.navigate('Exercise')}
+        title="Settings Screen"
+        onPress={() => alert('Settings Screen button clicked')}
       />
     </View>
   );
 };
 
-export default HomeScreen;
+export default SettingsScreen;
