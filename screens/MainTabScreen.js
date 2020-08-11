@@ -5,7 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 //for different screens
 import HomeScreen from './HomeScreen';
-import ExerciseScreen from './ExerciseScreen';
+import FavScreen from './FavScreen';
 import SettingsScreen from './SettingsScreen';
 import ProfileScreen from './ProfileScreen';
 
@@ -29,21 +29,19 @@ const MainTabScreen = () => (
       component={MyHome} // replace with HomeStackScreen if menu is  needed
       options={{
         tabBarLabel: 'HOME',
-        tabBarColor: '#01637c',
+        tabBarColor: 'black',
         tabBarIcon: ({color, size}) => (
           <Icon name="home" color={color} size={26} />
         ),
       }}
     />
     <Tab.Screen
-      name="Exercise"
-      component={ExerciseScreen} // replace with ExerciseScreen if menu is not needed
+      name="Favourite"
+      component={FavScreen}
       options={{
-        tabBarLabel: 'EXERCISE',
+        tabBarLabel: 'Favourite',
         tabBarColor: '#293c47',
-        tabBarIcon: ({color}) => (
-          <Icon name="fitness" color={color} size={26} />
-        ),
+        tabBarIcon: ({color}) => <Icon name="heart" color={color} size={26} />,
       }}
     />
     <Tab.Screen
@@ -101,7 +99,7 @@ const HomeStackScreen = ({navigation}) => (
   </HomeStack.Navigator>
 );
 
-const ExerciseStackScreen = ({navigation}) => (
+const FavouriteStackScreen = ({navigation}) => (
   <DetailsStack.Navigator
     screenOptions={{
       headerStyle: {
@@ -113,8 +111,8 @@ const ExerciseStackScreen = ({navigation}) => (
       },
     }}>
     <DetailsStack.Screen
-      name="EXERCISE"
-      component={ExerciseScreen}
+      name="Favourite"
+      component={FavScreen}
       options={{
         headerLeft: () => (
           <Icon.Button

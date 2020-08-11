@@ -24,38 +24,51 @@ const MyHome = ({navigation}) => {
     uri:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTStY893W6Ihm3px1v-iJu3s0qVaAcyXdiE2ICo9bShiQgpCSbx',
     name: 'Deadpool 2',
-    stat: '2019 Action/Sci-fi 3h 2m',
-    desc: 'Marvel....',
+    stat: '2018 Action/Sci-fi 2h 14m',
+    desc:
+      'Deadpool protects a young mutant Russell from the authorities and gets thrown in prison. However, he escapes and forms a team of mutants to prevent a time-travelling mercenary from killing Russell.',
   });
 
   const [gallery, setgallery] = useState([
     {
       image:
         'https://cdn3.volusion.com/sobge.mzrea/v/vspfiles/photos/NOTIT10764-2T.jpg',
-      title: 'Venom',
-      stat: '2019 Action/Sci-fi 3h 2m',
-      desc: 'Marvel....',
+      title: 'Deadpool 2',
+      stat: '2018 Action/Sci-fi 2h 14m',
+      desc:
+        'Deadpool protects a young mutant Russell from the authorities and gets thrown in prison. However, he escapes and forms a team of mutants to prevent a time-travelling mercenary from killing Russell.',
     },
     {
       image:
         'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQA_-tL18_rj9zEcjN6n41NEaJm-kRNF9UeOtvksZ4z_OW6jRA9',
       title: 'Avengers: End Game',
       stat: '2019 Action/Sci-fi 3h 2m',
-      desc: 'Again Thanos....',
+      desc:
+        'After Thanos, an intergalactic warlord, disintegrates half of the universe, the Avengers must reunite and assemble again to reinvigorate their trounced allies and restore balance.',
     },
     {
       image:
         'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTvGNXRmC76GfZrgM7P_oY0nZqg00bsjC7E5zu4dZBReXiHD_kt',
       title: 'Venom',
-      stat: '2019 Action/Sci-fi 3h 2m',
-      desc: 'Marvel',
+      stat: '2018 ‧ Action/Sci-fi ‧ 2h 20m',
+      desc:
+        'While trying to take down Carlton, the CEO of Life Foundation, Eddie, a journalist, investigates experiments of human trials. Unwittingly, he gets merged with a symbiotic alien with lethal abilities.',
     },
     {
       image:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTStY893W6Ihm3px1v-iJu3s0qVaAcyXdiE2ICo9bShiQgpCSbx',
       title: 'Spider Man',
-      stat: '2019 Action/Sci-fi 3h 2m',
-      desc: 'Marvel',
+      stat: '2019 ‧ Action/Adventure ‧ 2h 9m',
+      desc:
+        'As Spider-Man, a beloved superhero, Peter Parker faces four destructive elemental monsters while on holiday in Europe. Soon, he receives help from Mysterio, a fellow hero with mysterious origins.',
+    },
+    {
+      image:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJKLiEyyz1Q9RC8EBYl3ijr3nuGeyO2ETmwy6Kdq0AQtD0elWD',
+      title: 'Joker',
+      stat: '2019 ‧ Drama/Crime ‧ 2h 2m',
+      desc:
+        'Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a futile attempt to feel like he is part of the world around him.',
     },
   ]);
 
@@ -79,7 +92,7 @@ const MyHome = ({navigation}) => {
           <Image source={{uri: item.image}} style={styles.carouselImage} />
           <Text style={styles.carouselText}>{item.title}</Text>
           <Icon
-            name="add"
+            name="heart"
             color="white"
             size={30}
             style={styles.carouselIcon}
@@ -99,7 +112,7 @@ const MyHome = ({navigation}) => {
             blurRadius={10}>
             <View style={styles.searchBoxContainer}>
               <TextInput
-                placeholder="Search Exercise Program"
+                placeholder="Search Movies"
                 placeholderTextColor="#666"
                 style={styles.SearchBox}
               />
@@ -185,7 +198,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     elevation: 10,
     borderRadius: 4,
-    marginVertical: 10,
+    marginVertical: 15,
     width: '95%',
     flexDirection: 'row',
     alignSelf: 'center',
