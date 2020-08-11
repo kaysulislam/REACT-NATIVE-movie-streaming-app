@@ -17,8 +17,6 @@ import {
 import Carousel from 'react-native-anchor-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-//import {FontAwesome5, Feather, MaterialIcons} from '@expo/vector-icons';
-
 const MyHome = ({navigation}) => {
   const [background, setBackground] = useState({
     uri:
@@ -72,6 +70,32 @@ const MyHome = ({navigation}) => {
     },
   ]);
 
+  const [list, setList] = useState([
+    {
+      image: 'https://drnorth.files.wordpress.com/2011/12/oblivion-poster.jpg',
+      key: '1',
+    },
+    {
+      image: 'https://usercontent1.hubstatic.com/14499834_f520.jpg',
+      key: '2',
+    },
+    {
+      image:
+        'https://lh6.googleusercontent.com/proxy/sy8oArO_VKoNyIFNsUKKSE2AbeN7IfngWliXETeMLHw7CdhOu1Cx4vy8jVQg-DDmMkVntto2vfQPdYjHR-eEwHDB3Vg6_2t_5IiACQDDb2rdFlykgJ0GIgu9-8O73CTEFu2IhARPAlGXgNruIGkqn6s',
+      key: '3',
+    },
+    {
+      image:
+        'https://images.jdmagicbox.com/movies/centralized_123398532019_12_25_09_45_47_220.jpg',
+      key: '4',
+    },
+    {
+      image:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJKLiEyyz1Q9RC8EBYl3ijr3nuGeyO2ETmwy6Kdq0AQtD0elWD',
+      key: '5',
+    },
+  ]);
+
   const carouselRef = useRef(null);
 
   const {width, height} = Dimensions.get('window');
@@ -91,12 +115,7 @@ const MyHome = ({navigation}) => {
           }}>
           <Image source={{uri: item.image}} style={styles.carouselImage} />
           <Text style={styles.carouselText}>{item.title}</Text>
-          <Icon
-            name="heart"
-            color="white"
-            size={30}
-            style={styles.carouselIcon}
-          />
+          <Icon name="add" color="#fff" size={30} style={styles.carouselIcon} />
         </TouchableOpacity>
       </View>
     );
@@ -168,6 +187,94 @@ const MyHome = ({navigation}) => {
             </View>
           </ImageBackground>
         </View>
+      </View>
+      <View style={{marginHorizontal: 14}}>
+        <Text
+          style={{
+            color: 'white',
+            fontSize: 24,
+            fontWeight: 'bold',
+            marginBottom: 24,
+            marginTop: 24,
+          }}>
+          Continue Watching
+        </Text>
+        <ImageBackground
+          source={{
+            uri:
+              'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTyyCYy3OZeCzFfY71jjpeavzbKjXsXjHiUiyOlvPYht81UR9lp',
+          }}
+          style={{height: 250, width: '100%', backgroundColor: '#000'}}
+          resizeMode="cover">
+          <Text style={{color: 'white', padding: 14}}>Batman Vs Superman</Text>
+          <TouchableOpacity
+            style={{
+              ...styles.playIconContainer,
+              position: 'absolute',
+              top: '40%',
+              right: '40%',
+            }}>
+            <Icon
+              name="play"
+              size={22}
+              color="#02AD94"
+              style={{marginLeft: 4}}
+            />
+          </TouchableOpacity>
+        </ImageBackground>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: 24,
+            marginTop: 36,
+          }}>
+          <Text
+            style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}
+            onPress={() => navigation.navigate('Favourite')}>
+            My Favourite
+          </Text>
+          <Text
+            style={{color: 'white', fontSize: 14, fontWeight: 'normal'}}
+            onPress={() => navigation.navigate('Favourite')}>
+            View All
+          </Text>
+        </View>
+
+        <FlatList
+          style={{marginBottom: 30}}
+          data={list}
+          horizontal={true}
+          renderItem={({item}) => {
+            return (
+              <TouchableOpacity style={{marginRight: 20}}>
+                <Image
+                  source={{uri: item.image}}
+                  style={{height: 300, width: 200}}
+                />
+                <View
+                  style={{
+                    position: 'absolute',
+                    height: 5,
+                    width: '100%',
+                    backgroundColor: '#02ad94',
+                    opacity: 0.8,
+                  }}></View>
+                <View
+                  style={{
+                    ...styles.playIconContainer,
+                    position: 'absolute',
+                    top: '40%',
+                    right: '30%',
+                    opacity: 0.9,
+                  }}>
+                  <Icon name="play" size={18} color="#02AD94" />
+                </View>
+              </TouchableOpacity>
+            );
+          }}
+        />
       </View>
     </ScrollView>
   );

@@ -53,17 +53,6 @@ const MainTabScreen = () => (
         tabBarIcon: ({color}) => <Icon name="person" color={color} size={26} />,
       }}
     />
-    <Tab.Screen
-      name="SETTINGS"
-      component={SettingsScreen}
-      options={{
-        tabBarLabel: 'SETTINGS',
-        tabBarColor: '#01394a',
-        tabBarIcon: ({color}) => (
-          <Icon name="settings" color={color} size={26} />
-        ),
-      }}
-    />
   </Tab.Navigator>
 );
 

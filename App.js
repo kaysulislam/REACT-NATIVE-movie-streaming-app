@@ -14,7 +14,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import MainTabScreen from './screens/MainTabScreen';
 import FavScreen from './screens/FavScreen';
 import ProfileScreen from './screens/ProfileScreen';
-import SettingsScreen from './screens/SettingsScreen';
+//import SettingsScreen from './screens/SettingsScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -25,7 +25,6 @@ const App = () => {
         <Drawer.Screen name="Home" component={MainTabScreen} />
         <Drawer.Screen name="Favourite" component={FavScreen} />
         <Drawer.Screen name="Profile" component={ProfileScreen} />
-        <Drawer.Screen name="Settings" component={SettingsScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
